@@ -1,24 +1,13 @@
-# README
+# COPD与哮喘患者登记卡
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### 管理员
+登录及退出
+新建录入员
+录入登记数据
+按条件查询所有登记卡（列表及详情）
+导出数据（Excel）
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 录入员
+登录及退出
+录入登记数据
+查询自己录入的数据
