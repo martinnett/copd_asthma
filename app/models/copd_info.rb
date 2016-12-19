@@ -1,0 +1,2 @@
+class CopdInfo < ApplicationRecord
+end

@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  name: MyString
+  age: 1
+  gender: MyString
+  birth_date: 
+  job: MyString
+  is_smoke: MyString
+  smoke_age: 1
+  smoke_day_number: 1
+  emali: MyString
+  house_address: MyString
+  zip_code: 1
+  house_mobile: 1
+  job_mobile: 1
+  phone: 1
+  bronchial_function: 1
+  lung_level: 1
+  diagnosis: MyString
+  remarks: MyText
+  type: 
+
+two:
+  user_id: 1
+  name: MyString
+  age: 1
+  gender: MyString
+  birth_date: 
+  job: MyString
+  is_smoke: MyString
+  smoke_age: 1
+  smoke_day_number: 1
+  emali: MyString
+  house_address: MyString
+  zip_code: 1
+  house_mobile: 1
+  job_mobile: 1
+  phone: 1
+  bronchial_function: 1
+  lung_level: 1
+  diagnosis: MyString
+  remarks: MyText
+  type: 

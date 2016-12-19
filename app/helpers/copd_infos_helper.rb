@@ -1,0 +1,2 @@
+module CopdInfosHelper
+end
