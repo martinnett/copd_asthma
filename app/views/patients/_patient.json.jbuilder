@@ -1,2 +1,0 @@
-json.extract! patient, :id, :name, :age, :gender, :birth, :job, :smoke, :smoke_age, :smoke_freq, :email, :address, :postcode, :home_tel, :work_tel, :mobile, :patient_type, :diagnose, :note, :fev_fvc, :fev_pred, :lung_grade, :created_at, :updated_at
-json.url patient_url(patient, format: :json)
