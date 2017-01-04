@@ -1,2 +1,0 @@
-class CopdInfo < ApplicationRecord
-end
