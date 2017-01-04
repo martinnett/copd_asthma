@@ -10,31 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218074800) do
+ActiveRecord::Schema.define(version: 20170104082843) do
 
-  create_table "copd_infos", force: :cascade do |t|
-    t.integer  "user_id"
+  create_table "patients", force: :cascade do |t|
     t.string   "name"
     t.integer  "age"
     t.string   "gender"
-    t.datetime "birth_date"
+    t.date     "birth"
     t.string   "job"
-    t.string   "is_smoke"
+    t.string   "smoke"
     t.integer  "smoke_age"
-    t.integer  "smoke_day_number"
-    t.string   "emali"
-    t.string   "house_address"
-    t.integer  "zip_code"
-    t.integer  "house_mobile"
-    t.integer  "job_mobile"
-    t.integer  "phone"
-    t.integer  "bronchial_function"
-    t.integer  "lung_level"
-    t.string   "diagnosis"
-    t.text     "remarks"
-    t.string   "type"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "smoke_freq"
+    t.string   "email"
+    t.string   "address"
+    t.string   "postcode"
+    t.string   "home_tel"
+    t.string   "work_tel"
+    t.string   "mobile"
+    t.string   "patient_type"
+    t.string   "diagnose"
+    t.text     "note"
+    t.string   "fev_fvc"
+    t.string   "fev_pred"
+    t.string   "lung_grade"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|

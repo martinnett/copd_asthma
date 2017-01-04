@@ -1,0 +1,104 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @patient.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @patient.age %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @patient.gender %>
+</p>
+
+<p>
+  <strong>Birth:</strong>
+  <%= @patient.birth %>
+</p>
+
+<p>
+  <strong>Job:</strong>
+  <%= @patient.job %>
+</p>
+
+<p>
+  <strong>Smoke:</strong>
+  <%= @patient.smoke %>
+</p>
+
+<p>
+  <strong>Smoke age:</strong>
+  <%= @patient.smoke_age %>
+</p>
+
+<p>
+  <strong>Smoke freq:</strong>
+  <%= @patient.smoke_freq %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @patient.email %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @patient.address %>
+</p>
+
+<p>
+  <strong>Postcode:</strong>
+  <%= @patient.postcode %>
+</p>
+
+<p>
+  <strong>Home tel:</strong>
+  <%= @patient.home_tel %>
+</p>
+
+<p>
+  <strong>Work tel:</strong>
+  <%= @patient.work_tel %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @patient.mobile %>
+</p>
+
+<p>
+  <strong>Patient type:</strong>
+  <%= @patient.patient_type %>
+</p>
+
+<p>
+  <strong>Diagnose:</strong>
+  <%= @patient.diagnose %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @patient.note %>
+</p>
+
+<p>
+  <strong>Fev fvc:</strong>
+  <%= @patient.fev_fvc %>
+</p>
+
+<p>
+  <strong>Fev pred:</strong>
+  <%= @patient.fev_pred %>
+</p>
+
+<p>
+  <strong>Lung grade:</strong>
+  <%= @patient.lung_grade %>
+</p>
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', patients_path %>

@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Patients</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Birth</th>
+      <th>Job</th>
+      <th>Smoke</th>
+      <th>Smoke age</th>
+      <th>Smoke freq</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Postcode</th>
+      <th>Home tel</th>
+      <th>Work tel</th>
+      <th>Mobile</th>
+      <th>Patient type</th>
+      <th>Diagnose</th>
+      <th>Note</th>
+      <th>Fev fvc</th>
+      <th>Fev pred</th>
+      <th>Lung grade</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @patients.each do |patient| %>
+      <tr>
+        <td><%= patient.name %></td>
+        <td><%= patient.age %></td>
+        <td><%= patient.gender %></td>
+        <td><%= patient.birth %></td>
+        <td><%= patient.job %></td>
+        <td><%= patient.smoke %></td>
+        <td><%= patient.smoke_age %></td>
+        <td><%= patient.smoke_freq %></td>
+        <td><%= patient.email %></td>
+        <td><%= patient.address %></td>
+        <td><%= patient.postcode %></td>
+        <td><%= patient.home_tel %></td>
+        <td><%= patient.work_tel %></td>
+        <td><%= patient.mobile %></td>
+        <td><%= patient.patient_type %></td>
+        <td><%= patient.diagnose %></td>
+        <td><%= patient.note %></td>
+        <td><%= patient.fev_fvc %></td>
+        <td><%= patient.fev_pred %></td>
+        <td><%= patient.lung_grade %></td>
+        <td><%= link_to 'Show', patient %></td>
+        <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
+        <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Patient', new_patient_path %>

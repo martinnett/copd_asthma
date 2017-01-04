@@ -1,0 +1,117 @@
+<%= form_for(patient) do |f| %>
+  <% if patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+      <% patient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %>
+    <%= f.text_field :gender %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birth %>
+    <%= f.date_select :birth %>
+  </div>
+
+  <div class="field">
+    <%= f.label :job %>
+    <%= f.text_field :job %>
+  </div>
+
+  <div class="field">
+    <%= f.label :smoke %>
+    <%= f.text_field :smoke %>
+  </div>
+
+  <div class="field">
+    <%= f.label :smoke_age %>
+    <%= f.number_field :smoke_age %>
+  </div>
+
+  <div class="field">
+    <%= f.label :smoke_freq %>
+    <%= f.number_field :smoke_freq %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postcode %>
+    <%= f.text_field :postcode %>
+  </div>
+
+  <div class="field">
+    <%= f.label :home_tel %>
+    <%= f.text_field :home_tel %>
+  </div>
+
+  <div class="field">
+    <%= f.label :work_tel %>
+    <%= f.text_field :work_tel %>
+  </div>
+
+  <div class="field">
+    <%= f.label :mobile %>
+    <%= f.text_field :mobile %>
+  </div>
+
+  <div class="field">
+    <%= f.label :patient_type %>
+    <%= f.text_field :patient_type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :diagnose %>
+    <%= f.text_field :diagnose %>
+  </div>
+
+  <div class="field">
+    <%= f.label :note %>
+    <%= f.text_area :note %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fev_fvc %>
+    <%= f.text_field :fev_fvc %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fev_pred %>
+    <%= f.text_field :fev_pred %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lung_grade %>
+    <%= f.text_field :lung_grade %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
