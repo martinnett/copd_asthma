@@ -11,7 +11,7 @@
       <th>手机号码</th>
       <th>住址</th>
       <th>填表医生</th>
-      <th>操作</th>
+      <th colspan="2">操作</th>
     </tr>
   </thead>
 
@@ -25,9 +25,8 @@
         <td><%= patient.birth %></td>
         <td><%= patient.mobile %></td>
         <td><%= patient.address %></td>
-        <td><%= link_to 'Show', patient %></td>
-        <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-        <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '查看', patient %></td>
+        <td><%= link_to '删除', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

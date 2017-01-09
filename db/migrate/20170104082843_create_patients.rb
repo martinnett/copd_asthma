@@ -2,7 +2,6 @@ class CreatePatients < ActiveRecord::Migration[5.0]
   def change
     create_table :patients do |t|
       t.string :name
-      t.integer :age
       t.string :gender
       t.date :birth
       t.string :job
@@ -21,6 +20,7 @@ class CreatePatients < ActiveRecord::Migration[5.0]
       t.string :fev_fvc
       t.string :fev_pred
       t.string :lung_grade
+      t.string :user_id
 
       t.timestamps
     end

@@ -1,117 +1,112 @@
-<%= form_for(patient) do |f| %>
-  <% if patient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
-
-      <ul>
-      <% patient.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<%= form_for(patient, html: { class: "form-horizontal" }) do |f| %>
+<div class="form-group">
+  <%= f.label :name, class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= f.text_field :name, class: "form-control input-sm" %>
   </div>
-
-  <div class="field">
-    <%= f.label :age %>
-    <%= f.number_field :age %>
+  <%= f.label :gender, class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= f.select :gender, { "男" => 1, "女" => 2 }, class: "form-control input-sm" %>
   </div>
-
-  <div class="field">
-    <%= f.label :gender %>
-    <%= f.text_field :gender %>
+  <%= f.label '填表医生', class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= User.find(patient.user_id).name if User.find_by(id: patient.user_id) %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :birth %>
-    <%= f.date_select :birth %>
+<div class="form-group">
+  <%= f.label :birth, class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= f.text_field :birth, class: "form-control input-sm" %>
   </div>
+  <%= f.label :job, class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= f.text_field :job, class: "form-control input-sm" %>
+  </div>
+</div>
 
-  <div class="field">
-    <%= f.label :job %>
-    <%= f.text_field :job %>
+<div class="form-group">
+  <%= f.label :smoke, class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= f.select :smoke, { "吸烟" => 1, "不吸烟" => 2, "已戒烟" => 3 }, class: "form-control input-sm" %>
   </div>
+  <%= f.label :smoke_age, class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= f.number_field :smoke_age, class: "form-control input-sm" %>
+    <span>年</span>
+  </div>
+  <%= f.label :smoke_freq, class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= f.number_field :smoke_freq, class: "form-control input-sm" %>
+    <span class="text-hint">支/日</span>
+  </div>
+</div>
 
-  <div class="field">
-    <%= f.label :smoke %>
-    <%= f.text_field :smoke %>
+<div class="form-group">
+  <%= f.label :email, class: "control-label col-md-1" %>
+  <div class="col-md-5">
+    <%= f.text_field :email, class: "form-control input-sm" %>
   </div>
+  <%= f.label :postcode, class: "control-label col-md-1" %>
+  <div class="col-md-5">
+    <%= f.text_field :postcode, class: "form-control input-sm" %>
+  </div>
+</div>
 
-  <div class="field">
-    <%= f.label :smoke_age %>
-    <%= f.number_field :smoke_age %>
+<div class="form-group">
+  <%= f.label :address, class: "control-label col-md-1" %>
+  <div class="col-md-11">
+    <%= f.text_field :address, class: "form-control input-sm" %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :smoke_freq %>
-    <%= f.number_field :smoke_freq %>
+<div class="form-group">
+  <%= f.label :home_tel, class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= f.text_field :home_tel, class: "form-control input-sm" %>
   </div>
+  <%= f.label :work_tel, class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= f.text_field :work_tel, class: "form-control input-sm" %>
+  </div>
+  <%= f.label :mobile, class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= f.text_field :mobile, class: "form-control input-sm" %>
+  </div>
+</div>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+<% if patient.patient_type == 'copd' %>
+<div class="form-group">
+  <%= f.label :fev_fvc, class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= f.text_field :fev_fvc, class: "form-control input-sm" %>
   </div>
+  <%= f.label :fev_pred, class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= f.text_field :fev_pred, class: "form-control input-sm" %>
+  </div>
+  <%= f.label :lung_grade, class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= f.select :lung_grade, [1,2,3,4], class: "form-control input-sm" %>
+  </div>
+</div>
+<% else %>
+<div class="form-group">
+  <%= f.label :diagnose, class: "control-label col-md-1" %>
+  <div class="col-md-3">
+    <%= f.select :diagnose, { "哮喘" => 1, "过敏性鼻炎" => 2, "哮喘合并过敏性鼻炎" => 3, "哮喘合并慢阻肺" => 4 }, class: "form-control input-sm" %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label :note, class: "control-label col-md-1" %>
+  <div class="col-md-11">
+    <%= f.text_area :note, class: "form-control input-sm" %>
+  </div>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :postcode %>
-    <%= f.text_field :postcode %>
-  </div>
-
-  <div class="field">
-    <%= f.label :home_tel %>
-    <%= f.text_field :home_tel %>
-  </div>
-
-  <div class="field">
-    <%= f.label :work_tel %>
-    <%= f.text_field :work_tel %>
-  </div>
-
-  <div class="field">
-    <%= f.label :mobile %>
-    <%= f.text_field :mobile %>
-  </div>
-
-  <div class="field">
-    <%= f.label :patient_type %>
-    <%= f.text_field :patient_type %>
-  </div>
-
-  <div class="field">
-    <%= f.label :diagnose %>
-    <%= f.text_field :diagnose %>
-  </div>
-
-  <div class="field">
-    <%= f.label :note %>
-    <%= f.text_area :note %>
-  </div>
-
-  <div class="field">
-    <%= f.label :fev_fvc %>
-    <%= f.text_field :fev_fvc %>
-  </div>
-
-  <div class="field">
-    <%= f.label :fev_pred %>
-    <%= f.text_field :fev_pred %>
-  </div>
-
-  <div class="field">
-    <%= f.label :lung_grade %>
-    <%= f.text_field :lung_grade %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="actions text-center">
+  <%= f.submit '提交', class: "btn btn-primary" %>
+  <%= link_to '返回', :back, class: "btn btn-default" %>
+</div>
 <% end %>

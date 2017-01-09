@@ -14,7 +14,7 @@ class PatientsController < ApplicationController
 
   # GET /patients/new
   def new
-    @patient = Patient.new
+    @patient = Patient.new({patient_type: params[:format]})
   end
 
   # GET /patients/1/edit
@@ -62,13 +62,14 @@ class PatientsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_patient
-      @patient = Patient.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def patient_params
-      params.require(:patient).permit(:name, :age, :gender, :birth, :job, :smoke, :smoke_age, :smoke_freq, :email, :address, :postcode, :home_tel, :work_tel, :mobile, :patient_type, :diagnose, :note, :fev_fvc, :fev_pred, :lung_grade)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_patient
+    @patient = Patient.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def patient_params
+    params.require(:patient).permit(:name, :age, :gender, :birth, :job, :smoke, :smoke_age, :smoke_freq, :email, :address, :postcode, :home_tel, :work_tel, :mobile, :patient_type, :diagnose, :note, :fev_fvc, :fev_pred, :lung_grade)
+  end
 end

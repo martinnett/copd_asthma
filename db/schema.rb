@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 20170104082843) do
 
   create_table "patients", force: :cascade do |t|
     t.string   "name"
-    t.integer  "age"
     t.string   "gender"
     t.date     "birth"
     t.string   "job"
@@ -33,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170104082843) do
     t.string   "fev_fvc"
     t.string   "fev_pred"
     t.string   "lung_grade"
+    t.string   "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

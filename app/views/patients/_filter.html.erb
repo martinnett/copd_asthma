@@ -1,5 +1,5 @@
 <div class="row filter">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <label class="checkbox-inline">
       <input type="checkbox" name="patient_type" value="copd">
       COPD
@@ -8,6 +8,21 @@
       <input type="checkbox" name="patient_type" value="asthma">
       哮喘
     </label>
-    <%= link_to '新建患者', new_patient_path, class: "pull-right btn btn-primary" %>
+  </div>
+  <div class="col-md-6">
+    <div class="dropdown pull-right">
+      <button class="btn btn-primary dropdown-toggle" id="new_patient" data-toggle="dropdown">
+        新建患者
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="new_patient">
+        <li role="presentation">
+          <%= link_to 'COPD患者', new_patient_path('copd'), role: 'menuitem' %>
+        </li>
+        <li role="presentation">
+          <%= link_to '哮喘患者', new_patient_path('asthma'), role: 'menuitem' %>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

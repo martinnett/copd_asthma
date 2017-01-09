@@ -1,0 +1,25 @@
+zh:
+  activerecord:
+    model:
+      patient: '患者'
+    attributes:
+      patient:
+        name: '姓名'
+        age: '年龄'
+        gender: '性别'
+        birth: '生日'
+        job: '职业'
+        smoke: '吸烟情况'
+        smoke_age: '烟龄'
+        smoke_freq: '频率'
+        email: '邮箱'
+        postcode: '邮编'
+        address: '住址'
+        home_tel: '家庭电话'
+        work_tel: '工作电话'
+        mobile: '手机号码'
+        diagnose: '诊断'
+        note: '备注'
+        fev_fvc: 'FEV1/FVC'
+        fev_pred: 'FEV1%pred'
+        lung_grade: '肺功能分级'
