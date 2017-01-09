@@ -1,0 +1,91 @@
+<ol class="breadcrumb" style="text-align: center">
+  <b>创建病例</b>
+</ol>
+<div class="col-xs-6 col-sm-4"></div>
+<div class="col-xs-6 col-md-4">
+  <%= form_for @copd_info do |f| %>
+    <div class="form-group">
+      <label for="exampleInputEmail1">姓名：</label>
+      <%= f.text_field :name, class: "form-control", placeholder: "请输入姓名" %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">年龄：</label>
+      <%= f.text_field :age, class: "form-control", placeholder: "请输入年龄" %>
+    </div>
+    <label for="exampleInputEmail1">性别：</label>
+    <%= f.radio_button(:gender, "man") %>
+    <%= label_tag(:gender, "男") %>
+    <%= f.radio_button(:gender, "woman") %>
+    <%= label_tag(:gender, "女") %>
+    <div class="form-group">
+      <label for="exampleInputEmail1">出生日期：</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入出生日期">
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">职业：</label>
+      <%= f.text_field :job, class: "form-control", placeholder: "请输入职业" %>
+    </div>
+
+    <label for="exampleInputEmail1">吸烟情况：</label>
+    <%= f.radio_button(:is_smoke, "smoke") %>
+    <%= label_tag(:is_smoke, "吸烟") %>
+    <%= f.radio_button(:is_smoke, "no_smoke") %>
+    <%= label_tag(:is_smoke, "不吸烟") %>
+    <%= f.radio_button(:is_smoke, "quit_smoke") %>
+    <%= label_tag(:is_smoke, "已戒烟") %>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">烟龄：</label>
+      <%= f.text_field :smoke_age, class: "form-control", placeholder: "请输入烟龄" %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">日/支：</label>
+      <%= f.text_field :smoke_day_number, class: "form-control", placeholder: "请输入每日吸几支" %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email：</label>
+      <%= f.text_field :email, class: "form-control", placeholder: "请输入Emali" %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">家庭地址：</label>
+      <%= f.text_field :house_address, class: "form-control", placeholder: "请输入家庭地址" %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">邮编：</label>
+      <%= f.text_field :zip_code, class: "form-control", placeholder: "请输入邮编" %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">住宅电话：</label>
+      <%= f.text_field :house_mobile, class: "form-control", placeholder: "请输入住宅电话" %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">工作电话：</label>
+      <%= f.text_field :job_mobile, class: "form-control", placeholder: "请输入工作电话" %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">移动电话：</label>
+      <%= f.text_field :phone, class: "form-control", placeholder: "请输入移动电话" %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">支气管舒张剂后肺功能：</label>
+      <%= f.text_field :zip_code, class: "form-control", placeholder: "请输入邮编" %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">邮编：</label>
+      <%= f.text_field :zip_code, class: "form-control", placeholder: "请输入邮编" %>
+    </div>
+
+    <label for="exampleInputEmail1">肺功能分级：</label>
+    <%= f.radio_button(:lung_level, "1") %>
+    <%= label_tag(:lung_level, "1") %>
+    <%= f.radio_button(:lung_level, "2") %>
+    <%= label_tag(:lung_level, "2") %>
+    <%= f.radio_button(:lung_level, "3") %>
+    <%= label_tag(:lung_level, "3") %>
+    <%= f.radio_button(:lung_level, "4") %>
+    <%= label_tag(:lung_level, "4") %>
+
+    <button type="submit" class="btn btn-primary">保存</button>
+  <% end %>
+</div>

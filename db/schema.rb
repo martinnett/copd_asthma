@@ -12,6 +12,31 @@
 
 ActiveRecord::Schema.define(version: 20170104082843) do
 
+  create_table "copd_infos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "age"
+    t.string   "gender"
+    t.datetime "birth_date"
+    t.string   "job"
+    t.string   "is_smoke"
+    t.integer  "smoke_age"
+    t.integer  "smoke_day_number"
+    t.string   "email"
+    t.string   "house_address"
+    t.integer  "zip_code"
+    t.integer  "house_mobile"
+    t.integer  "job_mobile"
+    t.integer  "phone"
+    t.integer  "bronchial_function"
+    t.integer  "lung_level"
+    t.string   "diagnosis"
+    t.text     "remarks"
+    t.string   "type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
   create_table "patients", force: :cascade do |t|
     t.string   "name"
     t.string   "gender"

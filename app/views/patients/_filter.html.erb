@@ -9,7 +9,7 @@
       哮喘
     </label>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-5">
     <div class="dropdown pull-right">
       <button class="btn btn-primary dropdown-toggle" id="new_patient" data-toggle="dropdown">
         新建患者
@@ -24,5 +24,8 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div class="col-md-1">
+    <%= link_to "导出excel", root_path(format: "csv"), class: "btn btn-primary btn-sm margin-left-5"%>
   </div>
 </div>

@@ -1,82 +1,82 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>姓名:</strong>
   <%= @patient.name %>
 </p>
 
 <p>
-  <strong>Gender:</strong>
+  <strong>性别:</strong>
   <%= @patient.gender %>
 </p>
 
 <p>
-  <strong>Birth:</strong>
+  <strong>生日:</strong>
   <%= @patient.birth %>
 </p>
 
 <p>
-  <strong>Job:</strong>
+  <strong>职业:</strong>
   <%= @patient.job %>
 </p>
 
 <p>
-  <strong>Smoke:</strong>
+  <strong>是否抽烟:</strong>
   <%= @patient.smoke %>
 </p>
 
 <p>
-  <strong>Smoke age:</strong>
+  <strong>烟龄:</strong>
   <%= @patient.smoke_age %>
 </p>
 
 <p>
-  <strong>Smoke freq:</strong>
+  <strong>一天几支烟:</strong>
   <%= @patient.smoke_freq %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong>邮箱:</strong>
   <%= @patient.email %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>地址:</strong>
   <%= @patient.address %>
 </p>
 
 <p>
-  <strong>Postcode:</strong>
+  <strong>邮编:</strong>
   <%= @patient.postcode %>
 </p>
 
 <p>
-  <strong>Home tel:</strong>
+  <strong>家庭电话:</strong>
   <%= @patient.home_tel %>
 </p>
 
 <p>
-  <strong>Work tel:</strong>
+  <strong>工作电话:</strong>
   <%= @patient.work_tel %>
 </p>
 
 <p>
-  <strong>Mobile:</strong>
+  <strong>随身电话:</strong>
   <%= @patient.mobile %>
 </p>
 
-<p>
+<!-- <p>
   <strong>Patient type:</strong>
-  <%= @patient.patient_type %>
-</p>
+  <%#= @patient.patient_type %>
+</p> -->
 
 <p>
-  <strong>Diagnose:</strong>
+  <strong>诊断:</strong>
   <%= @patient.diagnose %>
 </p>
 
 <p>
-  <strong>Note:</strong>
+  <strong>注释:</strong>
   <%= @patient.note %>
 </p>
 
@@ -95,5 +95,5 @@
   <%= @patient.lung_grade %>
 </p>
 
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
+<%= link_to '编辑', edit_patient_path(@patient) %> |
+<%= link_to '返回', patients_path %>
