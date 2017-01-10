@@ -11,8 +11,32 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <div class="navbar-brand">COPD及哮喘患者信息登记系统</div>
+          <div class="navbar-brand">
+            <%= link_to 'COPD及哮喘患者信息登记系统', root_path %>
+          </div>
         </div>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_logined? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= current_user.realname %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to '修改密码', '#' %>
+              </li>
+              <li>
+                <%= link_to '退出', logout_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to '登录', login_path %>
+          </li>
+          <% end %>
+        </ul>
       </div>
     </nav>
     <div class="container">

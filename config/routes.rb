@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   resources :patients
-  root 'patients#index'
+  resources :users, only: [:index, :new, :create]
 
-  resources :users, only: [:index, :new, :create] do
-    collection do
-      post :login
-    end
-  end
-
+  root    'patients#index'
+  get     'login', to: 'sessions#new'
+  post    'login', to: 'sessions#create'
+  delete  'logout', to: 'sessions#destroy'
 end

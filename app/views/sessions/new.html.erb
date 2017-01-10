@@ -1,0 +1,28 @@
+<% provide(:title, '登录') %>
+
+<div class="text-center">
+  <h1>登录系统</h1>
+</div>
+<hr>
+<%= form_for :session, url: login_path, html: { class: 'login-form' } do |f| %>
+<div class="form-group">
+  <%= flash_message %>
+</div>
+<div class="list-group">
+  <div class="list-group-item">
+    <%= f.text_field :username, class: "form-control form-control-clear", placeholder: '请输入用户名' %>
+  </div>
+  <div class="list-group-item">
+    <%= f.password_field :password, class: "form-control form-control-clear", placeholder: '请输入密码' %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.submit '登录', class: "btn btn-primary btn-block" %>
+</div>
+<div class="form-group">
+  <p class="text-muted">
+    <span class="glyphicon glyphicon-info-sign"></span>
+    如需开通账户，请联系管理员
+  </p>
+</div>
+<% end %>
