@@ -33,6 +33,9 @@
           </li>
           <% else %>
           <li>
+            <%= link_to '添加账号', new_user_path %>
+          </li>
+          <li>
             <%= link_to '登录', login_path %>
           </li>
           <% end %>

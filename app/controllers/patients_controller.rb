@@ -1,13 +1,13 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
   # GET /patients
   # GET /patients.json
   def index
     @patients = Patient.all
     respond_to do |format|
       format.html
-      format.csv { send_data @patients.to_csv }
+      format.xls { send_data @patients.to_csv, :filename => '患者信息.xls' }
     end
   end
 
