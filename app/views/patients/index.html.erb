@@ -28,7 +28,7 @@
         <td><%= patient.mobile %></td>
         <td><%= patient.address %></td>
         <td><%= User.find_by(id: patient.user_id).realname if User.find_by(id: patient.user_id) %></td>
-        <td><%= link_to '查看', patient, class: "btn btn-primary btn-xs"  %></td>
+        <!-- <td><%# link_to '查看', patient, class: "btn btn-primary btn-xs"  %></td> -->
         <td><%= link_to '编辑', edit_patient_path(patient), class: "btn btn-primary btn-xs" %></td>
         <td><%= link_to '删除', patient, method: :delete, data: { confirm: '确定删除?' }, class: "btn btn-danger btn-xs"  %></td>
       </tr>
