@@ -9,6 +9,12 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def auth_check
+    if !user_logined?
+      redirect_to login_path
+    end
+  end
+
   def login_from_session
     if session[:user_id].present?
       begin

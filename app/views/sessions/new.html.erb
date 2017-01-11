@@ -1,9 +1,7 @@
-<% provide(:title, '登录') %>
-
 <div class="text-center">
   <h1>登录系统</h1>
 </div>
-<hr>
+<br>
 <%= form_for :session, url: login_path, html: { class: 'login-form' } do |f| %>
 <div class="form-group">
   <%= flash_message %>
