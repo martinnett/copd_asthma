@@ -1,111 +1,182 @@
-<%= form_for(patient, html: { class: "form-horizontal" }) do |f| %>
-<div class="form-group">
-  <%= f.label :name, class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= f.text_field :name, class: "form-control input-sm" %>
+<%= form_for(patient, html: { class: "form-horizontal patient-form" }) do |f| %>
+<fieldset class="narrow">
+  <% if patient.errors.any? %>
+  <div id="error_explanation">
+    <p class="text-center text-danger">提交失败表单还存在一下问题：</p>
+    <ul>
+      <% patient.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
   </div>
-  <%= f.label :gender, class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= f.select :gender, { "男" => 1, "女" => 2 }, class: "form-control input-sm" %>
+  <% end %>
+  <div class="form-group">
+    <p class="text-center text-muted">
+      <span class="glyphicon glyphicon-info-sign"></span>
+      带 * 号为必填项
+    </p>
   </div>
-  <%= f.label '填表医生', class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= User.find(patient.user_id).name if User.find_by(id: patient.user_id) %>
+  <%= hidden_field_tag 'patient[user_id]', current_user.id %>
+  <%= hidden_field_tag 'patient[patient_type]', patient.patient_type %>
+  <div class="form-group">
+    <%= f.label :name, class: "control-label col-md-2" %>
+    <div class="col-md-4">
+      <%= f.text_field :name, class: "form-control input-sm" %>
+    </div>
+    <%= f.label :gender, class: 'col-md-2 control-label' %>
+    <div class="col-md-4">
+      <div class="col-md-6 radio">
+        <label>
+          <input type="radio" name="patient[gender]" id="optionMale" value="1" <%= 'checked' if patient.gender == '1' %>>
+          男
+        </label>
+      </div>
+      <div class="col-md-6 radio">
+        <label>
+          <input type="radio" name="patient[gender]" id="optionFemale" value="2" <%= 'checked' if patient.gender == '2' %>>
+          女
+        </label>
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="form-group">
-  <%= f.label :birth, class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= f.text_field :birth, class: "form-control input-sm" %>
+  <div class="form-group">
+    <%= f.label :birth, class: 'col-md-2 control-label' %>
+    <div class="col-md-4">
+      <%= f.date_field :birth, class: 'form-control input-sm' %>
+    </div>
+    <%= f.label :mobile, class: "control-label col-md-2" %>
+    <div class="col-md-4">
+      <%= f.text_field :mobile, class: "form-control input-sm" %>
+    </div>
+    <%# f.label :age, class: "control-label col-md-2" %>
+    <!-- <div class="col-md-4"> -->
+    <%# (DateTime.now - patient.birth).to_i / 365 + 1 %>
+    <!-- 岁 -->
+    <!-- </div> -->
   </div>
-  <%= f.label :job, class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= f.text_field :job, class: "form-control input-sm" %>
+  <div class="form-group">
+    <%= f.label :smoke, class: "control-label col-md-2" %>
+    <div class="col-md-2">
+      <%= f.select :smoke, { "吸烟" => 1, "不吸烟" => 2, "已戒烟" => 3 }, class: "form-control input-sm" %>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group">
+        <div class="input-group-addon">烟龄</div>
+        <%= f.number_field :smoke_age, class: "form-control input-sm" %>
+        <div class="input-group-addon">年</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group">
+        <div class="input-group-addon">频率</div>
+        <%= f.number_field :smoke_freq, class: "form-control input-sm" %>
+        <div class="input-group-addon">支/日</div>
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="form-group">
-  <%= f.label :smoke, class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= f.select :smoke, { "吸烟" => 1, "不吸烟" => 2, "已戒烟" => 3 }, class: "form-control input-sm" %>
+  <div class="form-group">
+    <%= f.label :job, class: "control-label col-md-2" %>
+    <div class="col-md-3">
+      <%= f.text_field :job, class: "form-control input-sm" %>
+    </div>
+    <%= f.label :email, class: "control-label col-md-2" %>
+    <div class="col-md-5">
+      <%= f.text_field :email, class: "form-control input-sm" %>
+    </div>
   </div>
-  <%= f.label :smoke_age, class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= f.number_field :smoke_age, class: "form-control input-sm" %>
-    <span>年</span>
+  <div class="form-group">
+    <%= f.label :address, class: "control-label col-md-2" %>
+    <div class="col-md-6">
+      <%= f.text_field :address, class: "form-control input-sm" %>
+    </div>
+    <%= f.label :postcode, class: "control-label col-md-2" %>
+    <div class="col-md-2">
+      <%= f.text_field :postcode, class: "form-control input-sm" %>
+    </div>
   </div>
-  <%= f.label :smoke_freq, class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= f.number_field :smoke_freq, class: "form-control input-sm" %>
-    <span class="text-hint">支/日</span>
+  <div class="form-group">
+    <%= f.label :home_tel, class: "control-label col-md-2" %>
+    <div class="col-md-4">
+      <%= f.text_field :home_tel, class: "form-control input-sm" %>
+    </div>
+    <%= f.label :work_tel, class: "control-label col-md-2" %>
+    <div class="col-md-4">
+      <%= f.text_field :work_tel, class: "form-control input-sm" %>
+    </div>
   </div>
-</div>
-
-<div class="form-group">
-  <%= f.label :email, class: "control-label col-md-1" %>
-  <div class="col-md-5">
-    <%= f.text_field :email, class: "form-control input-sm" %>
+  <% if patient.patient_type == 'copd' %>
+  <div class="form-group">
+    <%= f.label :fev_fvc, class: "control-label col-md-2" %>
+    <div class="col-md-4">
+      <%= f.text_field :fev_fvc, class: "form-control input-sm" %>
+    </div>
+    <%= f.label :fev_pred, class: "control-label col-md-2" %>
+    <div class="col-md-4">
+      <%= f.text_field :fev_pred, class: "form-control input-sm" %>
+    </div>
   </div>
-  <%= f.label :postcode, class: "control-label col-md-1" %>
-  <div class="col-md-5">
-    <%= f.text_field :postcode, class: "form-control input-sm" %>
+  <div class="form-group">
+    <%= f.label :lung_grade, class: "control-label col-md-2" %>
+    <div class="col-md-4">
+      <div class="col-md-3 radio">
+        <label>
+          <input type="radio" name="patient[lung_grade]" id="option1" value="1" <%= 'checked' if patient.lung_grade == '1' %>>
+          1
+        </label>
+      </div>
+      <div class="col-md-3 radio">
+        <label>
+          <input type="radio" name="patient[lung_grade]" id="option2" value="2" <%= 'checked' if patient.lung_grade == '2' %>>
+          2
+        </label>
+      </div>
+      <div class="col-md-3 radio">
+        <label>
+          <input type="radio" name="patient[lung_grade]" id="option3" value="3" <%= 'checked' if patient.lung_grade == '3' %>>
+          3
+        </label>
+      </div>
+      <div class="col-md-3 radio">
+        <label>
+          <input type="radio" name="patient[lung_grade]" id="option4" value="4" <%= 'checked' if patient.lung_grade == '4' %>>
+          4
+        </label>
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="form-group">
-  <%= f.label :address, class: "control-label col-md-1" %>
-  <div class="col-md-11">
-    <%= f.text_field :address, class: "form-control input-sm" %>
-  </div>
-</div>
-
-<div class="form-group">
-  <%= f.label :home_tel, class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= f.text_field :home_tel, class: "form-control input-sm" %>
-  </div>
-  <%= f.label :work_tel, class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= f.text_field :work_tel, class: "form-control input-sm" %>
-  </div>
-  <%= f.label :mobile, class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= f.text_field :mobile, class: "form-control input-sm" %>
-  </div>
-</div>
-<% if patient.patient_type == 'copd' %>
-<div class="form-group">
-  <%= f.label :fev_fvc, class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= f.text_field :fev_fvc, class: "form-control input-sm" %>
-  </div>
-  <%= f.label :fev_pred, class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= f.text_field :fev_pred, class: "form-control input-sm" %>
-  </div>
-  <%= f.label :lung_grade, class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= f.select :lung_grade, [1,2,3,4], class: "form-control input-sm" %>
-  </div>
-</div>
 <% else %>
-<div class="form-group">
-  <%= f.label :diagnose, class: "control-label col-md-1" %>
-  <div class="col-md-3">
-    <%= f.select :diagnose, { "哮喘" => 1, "过敏性鼻炎" => 2, "哮喘合并过敏性鼻炎" => 3, "哮喘合并慢阻肺" => 4 }, class: "form-control input-sm" %>
+  <div class="form-group">
+    <%= f.label :diagnose, class: "control-label col-md-2" %>
+    <div class="col-md-4">
+      <%= f.select :diagnose, { "哮喘" => 1, "过敏性鼻炎" => 2, "哮喘合并过敏性鼻炎" => 3, "哮喘合并慢阻肺" => 4 }, class: "form-control input-sm" %>
+    </div>
   </div>
-</div>
-<div class="form-group">
-  <%= f.label :note, class: "control-label col-md-1" %>
-  <div class="col-md-11">
-    <%= f.text_area :note, class: "form-control input-sm" %>
+  <div class="form-group">
+    <%= f.label :note, class: "control-label col-md-2" %>
+    <div class="col-md-10">
+      <%= f.text_area :note, class: "form-control input-sm" %>
+    </div>
   </div>
-</div>
-<% end %>
+  <% end %>
 
+  <div class="form-group">
+    <%= f.label '填表医生', class: "control-label col-md-2" %>
+    <div class="col-md-4">
+      <% if temp_user = User.find_by(id: patient.user_id) %>
+      <%= temp_user.realname %>
+    <% else %>
+      <%= current_user.realname %>
+      <% end %>
+    </div>
+    <%= f.label '填表时间', class: "control-label col-md-2" %>
+    <div class="col-md-4">
+      <%= patient.created_at %>
+    </div>
+  </div>
+</fieldset>
+<br>
 <div class="actions text-center">
   <%= f.submit '提交', class: "btn btn-primary" %>
-  <%= link_to '返回', :back, class: "btn btn-default" %>
+  <%= link_to '返回', patients_url, class: "btn btn-default" %>
 </div>
 <% end %>

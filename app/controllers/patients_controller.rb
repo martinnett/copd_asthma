@@ -4,6 +4,7 @@ class PatientsController < ApplicationController
 
   def index
     @patients = Patient.all
+    @patients = Patient.where(user_id: current_user.id) unless current_user.admin?
     respond_to do |format|
       format.html
       format.xls { send_data @patients.to_csv, filename: '患者信息.xls' }
@@ -22,26 +23,24 @@ class PatientsController < ApplicationController
 
   def create
     @patient = Patient.new(patient_params)
-
     respond_to do |format|
       if @patient.save
-        format.html { redirect_to @patient, notice: 'Patient was successfully created.' }
-        format.json { render :show, status: :created, location: @patient }
+        flash.now[:success] = '患者登记成功！'
+        format.html { redirect_to patients_url }
       else
-        format.html { render :new }
-        format.json { render json: @patient.errors, status: :unprocessable_entity }
+        format.html { render 'new' }
       end
     end
   end
 
   def update
+    # debugger
     respond_to do |format|
       if @patient.update(patient_params)
-        format.html { redirect_to @patient, notice: 'Patient was successfully updated.' }
-        format.json { render :show, status: :ok, location: @patient }
+        flash.now[:success] = '患者更新成功！'
+        format.html { redirect_to patients_url }
       else
         format.html { render :edit }
-        format.json { render json: @patient.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,8 +48,7 @@ class PatientsController < ApplicationController
   def destroy
     @patient.destroy
     respond_to do |format|
-      format.html { redirect_to patients_url, notice: 'Patient was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to patients_url, notice: '患者删除成功！' }
     end
   end
 
@@ -62,6 +60,6 @@ class PatientsController < ApplicationController
 
   def patient_params
     params.require(:patient)
-          .permit(:name, :age, :gender, :birth, :job, :smoke, :smoke_age, :smoke_freq, :email, :address, :postcode, :home_tel, :work_tel, :mobile, :patient_type, :diagnose, :note, :fev_fvc, :fev_pred, :lung_grade)
+          .permit(:name, :age, :gender, :birth, :job, :smoke, :smoke_age, :smoke_freq, :email, :address, :postcode, :home_tel, :work_tel, :mobile, :patient_type, :diagnose, :note, :fev_fvc, :fev_pred, :lung_grade, :user_id)
   end
 end
