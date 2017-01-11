@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(name: params[:session][:username].downcase)
+    user = User.find_by(username: params[:session][:username].downcase)
     if user
       user_login user
       redirect_to patients_path
