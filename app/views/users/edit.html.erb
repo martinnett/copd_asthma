@@ -1,0 +1,30 @@
+<% provide(:title, '修改密码') %>
+<div class="text-center">
+  <h1>修改密码</h1>
+</div>
+<br>
+<%= form_for @user, html: { class: 'login-form' } do |f| %>
+<div class="form-group">
+  <%= flash_message %>
+</div>
+<div class="list-group">
+  <div class="list-group-item">
+    <%= f.password_field :origin_password, class: "form-control form-control-clear", placeholder: '请输入原密码' %>
+  </div>
+  <div class="list-group-item">
+    <%= f.password_field :password, class: "form-control form-control-clear", placeholder: '请输入新密码' %>
+  </div>
+  <div class="list-group-item">
+    <%= f.password_field :password_confirmation, class: "form-control form-control-clear", placeholder: '请确认新密码' %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.submit '提交', class: "btn btn-primary btn-block" %>
+</div>
+<div class="form-group">
+  <p class="text-muted">
+    <span class="glyphicon glyphicon-info-sign"></span>
+    如忘记密码，请联系管理员
+  </p>
+</div>
+<% end %>

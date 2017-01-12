@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       get 'asthma'
     end
   end
-  resources :users, only: [:index, :new, :create]
+  resources :users, only: [:index, :new, :create, :edit, :update]
 
   root    'home#index'
   get     'login', to: 'sessions#new'
