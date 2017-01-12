@@ -13,24 +13,12 @@
     <input type="text" class="form-control input-sm" placeholder="输入患者姓名进行搜索">
     <button type="button" class="btn btn-primary btn-sm">搜索</button>
   </div> -->
-  <div class="col-md-6">
-    <p class="text-left">患者总数：<%= @patients.size %> 人</p>
-  </div>
-  <div class="col-md-6">
+  <div class="col-md-12">
+    <p class="pull-left">
+      患者总数：<%= @patients.size %>
+      人
+    </p>
     <%# link_to "导出患者", '#', class: "btn btn-primary btn-sm pull-right export" if current_user.admin? %>
-    <div class="dropdown pull-right">
-      <button class="btn btn-primary btn-sm dropdown-toggle" id="new_patient" data-toggle="dropdown">
-        新建患者
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="new_patient">
-        <li role="presentation">
-          <%= link_to 'COPD患者', new_patient_path('copd'), role: 'menuitem' %>
-        </li>
-        <li role="presentation">
-          <%= link_to '哮喘患者', new_patient_path('asthma'), role: 'menuitem' %>
-        </li>
-      </ul>
-    </div>
+    <%= link_to "新建患者", new_patient_path(controller.action_name), class: "btn btn-primary btn-sm pull-right" %>
   </div>
 </div>

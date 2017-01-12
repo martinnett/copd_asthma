@@ -5,6 +5,9 @@ class Patient < ApplicationRecord
   validates :job, presence: true
   validates :address, presence: true
 
+  scope :copd, -> { where(patient_type: 'copd') }
+  scope :asthma, -> { where(patient_type: 'asthma') }
+
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << ['姓名', '性别', '生日', '职业', '是否抽烟', '烟龄', '一天几支烟', '邮箱', '地址', '邮编', '家庭电话', '工作电话', '随身电话', '诊断', '注释', 'Fev fvc', 'Fev pred', 'Lung grade']

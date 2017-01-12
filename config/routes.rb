@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  resources :patients
+  resources :patients, except: :index do
+    collection do
+      get 'copd'
+      get 'asthma'
+    end
+  end
   resources :users, only: [:index, :new, :create]
 
-  root    'patients#index'
+  root    'home#index'
   get     'login', to: 'sessions#new'
   post    'login', to: 'sessions#create'
   delete  'logout', to: 'sessions#destroy'

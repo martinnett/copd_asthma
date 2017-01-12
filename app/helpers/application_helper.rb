@@ -7,4 +7,5 @@ module ApplicationHelper
     message << (content_tag :div, flash[:danger], class: 'text-danger') if flash[:danger]
     sanitize message
   end
+
 end

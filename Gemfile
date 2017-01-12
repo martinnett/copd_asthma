@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-gem 'sqlite3'
+gem 'rails', '~> 5.0.1'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -12,10 +11,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'pry-rails', group: :development
 gem 'roo', '~> 2.3.2'
 gem 'bcrypt'
-gem "cancan"
-gem "fastercsv"
+gem 'cancan'
+gem 'fastercsv'
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'byebug', platform: :mri
 end
 

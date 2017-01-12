@@ -1,0 +1,19 @@
+<%= provide(:title, '请选择系统') %>
+<div class="text-center">
+  <h2>请选择需要登录的系统</h2>
+</div>
+<hr>
+<div class="system-seletor">
+  <ul class="list-inline">
+    <li>
+      <h1><span class="glyphicon glyphicon-edit text-primary"></span></h1>
+      <h4>COPD患者登记系统</h4>
+      <%= link_to '进入系统', copd_patients_path, class: "btn btn-primary" %>
+    </li>
+    <li>
+      <h1><span class="glyphicon glyphicon-edit text-primary"></span></h1>
+      <h4>哮喘患者登记系统</h4>
+      <%= link_to '进入系统', asthma_patients_path, class: "btn btn-primary" %>
+    </li>
+  </ul>
+</div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>COPD及哮喘患者信息登记系统</title>
+    <title><%= yield :title %></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,7 +12,7 @@
       <div class="container">
         <div class="navbar-header">
           <div class="navbar-brand">
-            <%= link_to 'COPD及哮喘患者信息登记系统', root_path %>
+            <%= yield :title %>
           </div>
         </div>
         <ul class="nav navbar-nav navbar-right">

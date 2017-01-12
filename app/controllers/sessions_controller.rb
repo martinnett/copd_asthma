@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:session][:username].downcase)
     if user
       user_login user
-      redirect_to patients_path
+      redirect_to root_url
     else
       flash.now[:danger] = '用户名或者密码错误'
       render 'new'

@@ -1,17 +1,36 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  before_action :set_patient, only: [:edit, :update, :destroy]
   before_action :auth_check
 
-  def index
-    @patients = Patient.all
-    @patients = Patient.where(user_id: current_user.id) unless current_user.admin?
+  # def index
+  #   @patients = Patient.all
+  #   @patients = Patient.where(user_id: current_user.id) unless current_user.admin?
+  #   respond_to do |format|
+  #     format.html
+  #     format.xls { send_data @patients.to_csv, filename: '患者信息.xls' }
+  #   end
+  # end
+
+  def copd
+    @patients = if current_user.admin?
+                  Patient.copd
+                else
+                  Patient.copd.where(user_id: current_user.id)
+                end
     respond_to do |format|
       format.html
-      format.xls { send_data @patients.to_csv, filename: '患者信息.xls' }
     end
   end
 
-  def show
+  def asthma
+    @patients = if current_user.admin?
+                  Patient.asthma
+                else
+                  Patient.asthma.where(user_id: current_user.id)
+                end
+    respond_to do |format|
+      format.html
+    end
   end
 
   def new
@@ -26,7 +45,13 @@ class PatientsController < ApplicationController
     respond_to do |format|
       if @patient.save
         flash.now[:success] = '患者登记成功！'
-        format.html { redirect_to patients_url }
+        format.html do
+          if @patient.patient_type == 'copd'
+            redirect_to copd_patients_path
+          else
+            redirect_to asthma_patients_path
+          end
+        end
       else
         format.html { render 'new' }
       end
@@ -38,7 +63,13 @@ class PatientsController < ApplicationController
     respond_to do |format|
       if @patient.update(patient_params)
         flash.now[:success] = '患者更新成功！'
-        format.html { redirect_to patients_url }
+        format.html do
+          if @patient.patient_type == 'copd'
+            redirect_to copd_patients_path
+          else
+            redirect_to asthma_patients_path
+          end
+        end
       else
         format.html { render :edit }
       end
@@ -48,7 +79,13 @@ class PatientsController < ApplicationController
   def destroy
     @patient.destroy
     respond_to do |format|
-      format.html { redirect_to patients_url, notice: '患者删除成功！' }
+      format.html do
+        if @patient.patient_type == 'copd'
+          redirect_to copd_patients_path, notice: '患者删除成功！'
+        else
+          redirect_to asthma_patients_path, notice: '患者删除成功！'
+        end
+      end
     end
   end
 

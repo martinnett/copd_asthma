@@ -1,0 +1,38 @@
+<%= provide(:title, '哮喘患者登记系统') %>
+<p class="text-center text-success">
+  <%= notice %>
+</p>
+<%= render 'patients/filter' %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>患者类型</th>
+      <th>姓名</th>
+      <th>性别</th>
+      <th>出生日期</th>
+      <th>手机号码</th>
+      <th>住址</th>
+      <th>填表医生</th>
+      <th colspan="2">操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @patients.each do |patient| %>
+      <tr>
+        <td><%= patient.id %></td>
+        <td><span class="label label-info"><%= patient.patient_type_o %></span></td>
+        <td><%= patient.name %></td>
+        <td><%= patient.gender_o %></td>
+        <td><%= patient.birth %></td>
+        <td><%= patient.mobile %></td>
+        <td><%= patient.address %></td>
+        <td><%= User.find_by(id: patient.user_id).realname if User.find_by(id: patient.user_id) %></td>
+        <!-- <td><%# link_to '查看', patient, class: "btn btn-primary btn-xs"  %></td> -->
+        <td><%= link_to '编辑', edit_patient_path(patient), class: "btn btn-primary btn-xs" %></td>
+        <td><%= link_to '删除', patient, method: :delete, data: { confirm: '确定删除?' }, class: "btn btn-danger btn-xs"  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
