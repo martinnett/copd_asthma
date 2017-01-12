@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="COPD">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">序号</Data></Cell>
+        <Cell><Data ss:Type="String">姓名</Data></Cell>
+        <Cell><Data ss:Type="String">性别</Data></Cell>
+        <Cell><Data ss:Type="String">出生日期</Data></Cell>
+        <Cell><Data ss:Type="String">职业</Data></Cell>
+        <Cell><Data ss:Type="String">是否吸烟</Data></Cell>
+        <Cell><Data ss:Type="String">烟龄</Data></Cell>
+        <Cell><Data ss:Type="String">频率</Data></Cell>
+        <Cell><Data ss:Type="String">邮箱</Data></Cell>
+        <Cell><Data ss:Type="String">住址</Data></Cell>
+        <Cell><Data ss:Type="String">邮编</Data></Cell>
+        <Cell><Data ss:Type="String">家庭电话</Data></Cell>
+        <Cell><Data ss:Type="String">工作电话</Data></Cell>
+        <Cell><Data ss:Type="String">手机号码</Data></Cell>
+        <Cell><Data ss:Type="String">FEV1/FVC</Data></Cell>
+        <Cell><Data ss:Type="String">FEV1%pred</Data></Cell>
+        <Cell><Data ss:Type="String">肺功能分级</Data></Cell>
+      </Row>
+    <% @patients.each do |patient| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= patient.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.gender_o %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.birth %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.job %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.smoke %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.smoke_age %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.smoke_freq %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.address %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.postcode %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.home_tel %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.work_tel %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.mobile %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.fev_fvc %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.fev_pred %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patient.lung_grade %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

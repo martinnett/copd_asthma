@@ -2,15 +2,6 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:edit, :update, :destroy]
   before_action :auth_check
 
-  # def index
-  #   @patients = Patient.all
-  #   @patients = Patient.where(user_id: current_user.id) unless current_user.admin?
-  #   respond_to do |format|
-  #     format.html
-  #     format.xls { send_data @patients.to_csv, filename: '患者信息.xls' }
-  #   end
-  # end
-
   def copd
     @patients = if current_user.admin?
                   Patient.copd
@@ -19,6 +10,7 @@ class PatientsController < ApplicationController
                 end
     respond_to do |format|
       format.html
+      format.xls
     end
   end
 
@@ -30,6 +22,7 @@ class PatientsController < ApplicationController
                 end
     respond_to do |format|
       format.html
+      format.xls
     end
   end
 

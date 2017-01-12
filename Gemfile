@@ -9,7 +9,6 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'pry-rails', group: :development
-gem 'roo', '~> 2.3.2'
 gem 'bcrypt'
 gem 'cancan'
 gem 'fastercsv'
