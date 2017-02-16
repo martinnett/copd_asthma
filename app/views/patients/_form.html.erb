@@ -59,6 +59,7 @@
     <div class="col-md-2">
       <%= f.select :smoke, { "吸烟" => 1, "不吸烟" => 2, "已戒烟" => 3 }, class: "form-control input-sm" %>
     </div>
+    <% if patient.patient_type == 'copd' %>
     <div class="col-md-4">
       <div class="input-group">
         <%= f.number_field :smoke_age, class: "form-control input-sm" %>
@@ -71,6 +72,7 @@
         <div class="input-group-addon">支/日</div>
       </div>
     </div>
+    <% end %>
   </div>
   <div class="form-group">
     <%= f.label :job, class: "control-label col-md-2" %>
@@ -142,7 +144,7 @@
       </div>
     </div>
   </div>
-<% else %>
+  <% else %>
   <div class="form-group">
     <%= f.label :diagnose, class: "control-label col-md-2" %>
     <div class="col-md-4">
