@@ -61,14 +61,12 @@
     </div>
     <div class="col-md-4">
       <div class="input-group">
-        <div class="input-group-addon">烟龄</div>
         <%= f.number_field :smoke_age, class: "form-control input-sm" %>
         <div class="input-group-addon">年</div>
       </div>
     </div>
     <div class="col-md-4">
       <div class="input-group">
-        <div class="input-group-addon">频率</div>
         <%= f.number_field :smoke_freq, class: "form-control input-sm" %>
         <div class="input-group-addon">支/日</div>
       </div>
@@ -148,7 +146,7 @@
   <div class="form-group">
     <%= f.label :diagnose, class: "control-label col-md-2" %>
     <div class="col-md-4">
-      <%= f.select :diagnose, { "哮喘" => 1, "过敏性鼻炎" => 2, "哮喘合并过敏性鼻炎" => 3, "哮喘合并慢阻肺" => 4 }, class: "form-control input-sm" %>
+      <%= f.select :diagnose, { "过敏性鼻炎" => 1, "慢阻肺" => 2 }, class: "form-control input-sm" %>
     </div>
   </div>
   <div class="form-group">
