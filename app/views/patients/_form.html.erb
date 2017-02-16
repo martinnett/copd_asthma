@@ -158,21 +158,6 @@
     </div>
   </div>
   <% end %>
-
-  <div class="form-group">
-    <%= f.label '填表医生', class: "control-label col-md-2" %>
-    <div class="col-md-4">
-      <% if temp_user = User.find_by(id: patient.user_id) %>
-      <%= temp_user.realname %>
-    <% else %>
-      <%= current_user.realname %>
-      <% end %>
-    </div>
-    <%= f.label '填表时间', class: "control-label col-md-2" %>
-    <div class="col-md-4">
-      <%= patient.created_at %>
-    </div>
-  </div>
 </fieldset>
 <br>
 <div class="actions text-center">
