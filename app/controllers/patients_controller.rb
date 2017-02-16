@@ -46,7 +46,7 @@ class PatientsController < ApplicationController
           end
         end
       else
-        format.html { render 'new' }
+        format.html { render :new }
       end
     end
   end

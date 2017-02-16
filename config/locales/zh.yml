@@ -28,12 +28,22 @@ zh:
         patient:
           attributes:
             name:
-              blank: '不能为空'
+              blank: '为必填项，不能为空'
+            age:
+              blank: '为必填项，不能为空'
+            gender:
+              blank: '为必填项，不能为空'
             birth:
-              blank: '不能为空'
+              blank: '为必填项，不能为空'
             job:
-              blank: '不能为空'
+              blank: '为必填项，不能为空'
             address:
-              blank: '不能为空'
+              blank: '为必填项，不能为空'
             mobile:
-              blank: '不能为空'
+              blank: '为必填项，不能为空'
+            smoke:
+              blank: '为必填项，不能为空'
+            smoke_age:
+              blank: '为必填项，不能为空'
+            smoke_freq:
+              blank: '为必填项，不能为空'
