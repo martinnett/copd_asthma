@@ -4,10 +4,11 @@ class CreatePatients < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :gender
       t.date :birth
+      t.string :age
       t.string :job
       t.string :smoke
-      t.integer :smoke_age
-      t.integer :smoke_freq
+      t.string :smoke_age
+      t.string :smoke_freq
       t.string :email
       t.string :address
       t.string :postcode

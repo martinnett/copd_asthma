@@ -5,7 +5,7 @@ zh:
     attributes:
       patient:
         name: '* 姓名'
-        age: '年龄'
+        age: '* 年龄'
         gender: '* 性别'
         birth: '* 生日'
         job: '* 职业'

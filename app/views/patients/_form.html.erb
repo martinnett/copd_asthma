@@ -23,6 +23,15 @@
     <div class="col-md-4">
       <%= f.text_field :name, class: "form-control input-sm" %>
     </div>
+    <%= f.label :age, class: "control-label col-md-2" %>
+    <div class="col-md-4">
+      <div class="input-group">
+        <%= f.text_field :age, class: "form-control input-sm" %>
+        <div class="input-group-addon">岁</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
     <%= f.label :gender, class: 'col-md-2 control-label' %>
     <div class="col-md-4">
       <div class="col-md-6 radio">
@@ -62,13 +71,13 @@
     <% if patient.patient_type == 'copd' %>
     <div class="col-md-4">
       <div class="input-group">
-        <%= f.number_field :smoke_age, class: "form-control input-sm" %>
+        <%= f.text_field :smoke_age, class: "form-control input-sm" %>
         <div class="input-group-addon">年</div>
       </div>
     </div>
     <div class="col-md-4">
       <div class="input-group">
-        <%= f.number_field :smoke_freq, class: "form-control input-sm" %>
+        <%= f.text_field :smoke_freq, class: "form-control input-sm" %>
         <div class="input-group-addon">支/日</div>
       </div>
     </div>
@@ -106,13 +115,20 @@
   </div>
   <% if patient.patient_type == 'copd' %>
   <div class="form-group">
+    <%= f.label '支气管舒张剂后肺功能', class: "control-label col-md-2" %>
     <%= f.label :fev_fvc, class: "control-label col-md-2" %>
-    <div class="col-md-4">
-      <%= f.text_field :fev_fvc, class: "form-control input-sm" %>
+    <div class="col-md-3">
+      <div class="input-group">
+        <%= f.text_field :fev_fvc, class: "form-control input-sm" %>
+        <div class="input-group-addon">%</div>
+      </div>
     </div>
     <%= f.label :fev_pred, class: "control-label col-md-2" %>
-    <div class="col-md-4">
-      <%= f.text_field :fev_pred, class: "form-control input-sm" %>
+    <div class="col-md-3">
+      <div class="input-group">
+        <%= f.text_field :fev_pred, class: "form-control input-sm" %>
+        <div class="input-group-addon">%</div>
+      </div>
     </div>
   </div>
   <div class="form-group">
@@ -120,31 +136,31 @@
     <div class="col-md-4">
       <div class="col-md-3 radio">
         <label>
-          <input type="radio" name="patient[lung_grade]" id="option1" value="1" <%= 'checked' if patient.lung_grade == '1' %>>
+          <input type="radio" name="patient[lung_grade]" id="option1" value="1" disabled <%= 'checked' if patient.lung_grade == '1' %>>
           1
         </label>
       </div>
       <div class="col-md-3 radio">
         <label>
-          <input type="radio" name="patient[lung_grade]" id="option2" value="2" <%= 'checked' if patient.lung_grade == '2' %>>
+          <input type="radio" name="patient[lung_grade]" id="option2" value="2" disabled <%= 'checked' if patient.lung_grade == '2' %>>
           2
         </label>
       </div>
       <div class="col-md-3 radio">
         <label>
-          <input type="radio" name="patient[lung_grade]" id="option3" value="3" <%= 'checked' if patient.lung_grade == '3' %>>
+          <input type="radio" name="patient[lung_grade]" id="option3" value="3" disabled <%= 'checked' if patient.lung_grade == '3' %>>
           3
         </label>
       </div>
       <div class="col-md-3 radio">
         <label>
-          <input type="radio" name="patient[lung_grade]" id="option4" value="4" <%= 'checked' if patient.lung_grade == '4' %>>
+          <input type="radio" name="patient[lung_grade]" id="option4" value="4" disabled <%= 'checked' if patient.lung_grade == '4' %>>
           4
         </label>
       </div>
     </div>
   </div>
-  <% else %>
+<% else %>
   <div class="form-group">
     <%= f.label :diagnose, class: "control-label col-md-2" %>
     <div class="col-md-4">
