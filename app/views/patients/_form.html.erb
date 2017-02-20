@@ -81,6 +81,17 @@
         <div class="input-group-addon">支/日</div>
       </div>
     </div>
+    <% else %>
+    <div class="col-md-4">
+      <div class="input-group">
+        <%= f.hidden_field :smoke_age, class: "form-control input-sm", value: 0 %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group">
+        <%= f.hidden_field :smoke_freq, class: "form-control input-sm", value: 0 %>
+      </div>
+    </div>
     <% end %>
   </div>
   <div class="form-group">
@@ -181,3 +192,19 @@
   <%= link_to '返回', :back, class: "btn btn-default" %>
 </div>
 <% end %>
+
+<script type="text/javascript">
+  <% if patient.patient_type == 'copd' %>
+    (function(){
+      $('#patient_smoke').on('change', function(event){
+        if(event.target.value === "2") {
+          $('#patient_smoke_age').val('0').attr('disabled', true);
+          $('#patient_smoke_freq').val('0').attr('disabled', true);
+        } else {
+          $('#patient_smoke_age').val('').attr('disabled', false);
+          $('#patient_smoke_freq').val('').attr('disabled', false);
+        }
+      });
+    })();
+  <% end %>
+</script>
