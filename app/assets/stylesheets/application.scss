@@ -12,3 +12,12 @@
 @import "sessions";
 @import "home";
 @import "patients";
+
+// Overwrite
+.navbar-brand {
+  padding: 0;
+  img {
+    display: inline-block;
+    margin-right: 20px;
+  }
+}
