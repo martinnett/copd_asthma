@@ -2,6 +2,27 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:edit, :update, :destroy]
   before_action :auth_check
 
+  def index
+    pt = params[:pt]
+    @pt = pt
+    if pt == 'copd'
+      @patients = if current_user.admin?
+                    Patient.copd
+                  else
+                    Patient.copd.where(user_id: current_user.id)
+                  end
+    else
+      @patients = if current_user.admin?
+                    Patient.asthma
+                  else
+                    Patient.asthma.where(user_id: current_user.id)
+                  end
+    end
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def copd
     @patients = if current_user.admin?
                   Patient.copd
@@ -9,7 +30,6 @@ class PatientsController < ApplicationController
                   Patient.copd.where(user_id: current_user.id)
                 end
     respond_to do |format|
-      format.html
       format.xls
     end
   end
@@ -21,13 +41,14 @@ class PatientsController < ApplicationController
                   Patient.asthma.where(user_id: current_user.id)
                 end
     respond_to do |format|
-      format.html
       format.xls
     end
   end
 
   def new
-    @patient = Patient.new(patient_type: params[:format])
+    pt = params[:pt]
+    @patient = Patient.new
+    @patient.patient_type = pt == 'copd' ? 'copd' : 'asthma'
   end
 
   def edit
@@ -40,9 +61,9 @@ class PatientsController < ApplicationController
         flash.now[:success] = '患者登记成功！'
         format.html do
           if @patient.patient_type == 'copd'
-            redirect_to copd_patients_path
+            redirect_to patients_path({ pt: 'copd' })
           else
-            redirect_to asthma_patients_path
+            redirect_to patients_path({ pt: 'asthma' })
           end
         end
       else
@@ -58,9 +79,9 @@ class PatientsController < ApplicationController
         flash.now[:success] = '患者更新成功！'
         format.html do
           if @patient.patient_type == 'copd'
-            redirect_to copd_patients_path
+            redirect_to patients_path({ pt: 'copd' })
           else
-            redirect_to asthma_patients_path
+            redirect_to patients_path({ pt: 'asthma' })
           end
         end
       else
@@ -74,9 +95,9 @@ class PatientsController < ApplicationController
     respond_to do |format|
       format.html do
         if @patient.patient_type == 'copd'
-          redirect_to copd_patients_path, notice: '患者删除成功！'
+          redirect_to patients_path({ pt: 'copd' }), notice: '患者删除成功！'
         else
-          redirect_to asthma_patients_path, notice: '患者删除成功！'
+          redirect_to patients_path({ pt: 'asthma' }), notice: '患者删除成功！'
         end
       end
     end

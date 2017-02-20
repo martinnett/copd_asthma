@@ -1,4 +1,4 @@
-<%= provide(:title, 'COPD患者登记系统') %>
+<%= provide(:title, (@patient_type == 'copd' ? 'COPD' : '哮喘') + '患者登记系统') %>
 <p class="text-center text-success">
   <%= notice %>
 </p>
@@ -12,8 +12,8 @@
       <th>性别</th>
       <th>出生日期</th>
       <th>手机号码</th>
+      <th>吸烟情况</th>
       <th>住址</th>
-      <th>填表医生</th>
       <th colspan="2">操作</th>
     </tr>
   </thead>
@@ -27,9 +27,8 @@
         <td><%= patient.gender_o %></td>
         <td><%= patient.birth %></td>
         <td><%= patient.mobile %></td>
+        <td><%= patient.smoke_o %></td>
         <td><%= patient.address %></td>
-        <td><%= User.find_by(id: patient.user_id).realname if User.find_by(id: patient.user_id) %></td>
-        <!-- <td><%# link_to '查看', patient, class: "btn btn-primary btn-xs"  %></td> -->
         <td><%= link_to '编辑', edit_patient_path(patient), class: "btn btn-primary btn-xs" %></td>
         <td><%= link_to '删除', patient, method: :delete, data: { confirm: '确定删除?' }, class: "btn btn-danger btn-xs"  %></td>
       </tr>

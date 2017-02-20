@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :patients, except: :index do
+  resources :patients do
     collection do
       get 'copd'
       get 'asthma'

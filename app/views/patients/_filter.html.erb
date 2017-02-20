@@ -18,7 +18,7 @@
       患者总数：<%= @patients.size %>
       人
     </p>
-    <%= link_to "导出患者", export_path, class: "btn btn-primary btn-sm pull-right export" if current_user.admin? %>
-    <%= link_to "新建患者", new_patient_path(controller.action_name), class: "btn btn-primary btn-sm pull-right" %>
+    <%= link_to "导出患者", export_path(@pt), class: "btn btn-primary btn-sm pull-right export" if current_user.admin? %>
+    <%= link_to "新建患者", new_patient_path({ pt: @pt }), class: "btn btn-primary btn-sm pull-right" %>
   </div>
 </div>
