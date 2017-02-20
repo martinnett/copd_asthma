@@ -198,13 +198,36 @@
     (function(){
       $('#patient_smoke').on('change', function(event){
         if(event.target.value === "2") {
-          $('#patient_smoke_age').val('0').attr('disabled', true);
-          $('#patient_smoke_freq').val('0').attr('disabled', true);
+          $('#patient_smoke_age').val('0').prop('disabled', true);
+          $('#patient_smoke_freq').val('0').prop('disabled', true);
         } else {
-          $('#patient_smoke_age').val('').attr('disabled', false);
-          $('#patient_smoke_freq').val('').attr('disabled', false);
+          $('#patient_smoke_age').val('').prop('disabled', false);
+          $('#patient_smoke_freq').val('').prop('disabled', false);
         }
       });
+
+      function lung_grade_change() {
+        var fev_fvc_value = parseFloat($('#patient_fev_fvc').val());
+        var fev_pred_value = $('#patient_fev_pred').val();
+        if (!isNaN(fev_fvc_value) && !isNaN(fev_pred_value)) {
+          if (fev_fvc_value < 70) {
+            if (fev_pred_value >= 80) {
+              $('input[name="patient[lung_grade]"]:eq(0)').prop('checked', true);
+            } else if (fev_pred_value < 80 && fev_pred_value >= 50) {
+              $('input[name="patient[lung_grade]"]:eq(1)').prop('checked', true);
+            } else if (fev_pred_value < 50 && fev_pred_value >= 30) {
+              $('input[name="patient[lung_grade]"]:eq(2)').prop('checked', true);
+            } else {
+              $('input[name="patient[lung_grade]"]:eq(3)').prop('checked', true);
+            }
+          } else {
+            $('input[name="patient[lung_grade]"]:eq(0)').prop('checked', false);
+          }
+        }
+      }
+
+      $('#patient_fev_fvc').on('change', lung_grade_change);
+      $('#patient_fev_pred').on('change', lung_grade_change);
     })();
   <% end %>
 </script>
